@@ -1,0 +1,50 @@
+from random import *
+from time import *
+from math import *
+
+mot = input("Quel mot choisissez vous ? ")
+affichage = ""
+nb_prop_fausse = 7
+lettre_trouver = ""
+
+for i in mot:
+    affichage += "_ "
+print("Mot : ",affichage)
+
+while nb_prop_fausse != 0:
+    proposition = input("PROPOSITION : ")
+    
+    if proposition in mot:
+        lettre_trouver = lettre_trouver + proposition
+        print("BRABO, vous avez trouvé la bonne lettre" )
+        affichage = ""
+        for i in mot:
+            if i in lettre_trouver:
+                affichage += i + " "
+            else:
+                affichage += "_ "
+        print(affichage)
+            
+    else:
+        nb_prop_fausse -= 1
+        print("raté, esssaayez encore une fois")
+        if nb_prop_fausse == 6:
+            print("_______")
+           
+        if nb_prop_fausse == 5:
+            print("|\n|\n|\n|\n|_________")
+        if nb_prop_fausse == 4:
+            print(" _________\n|\n|\n|\n|\n|__________")
+        if nb_prop_fausse == 3:
+            print(" _________\n|        |\n|\n|\n|\n|___________")                                               #     |\n|     o\n|    /|\ \n|    / \ \n|______       ")
+        if nb_prop_fausse == 2:
+            print(" _________\n|        |\n|        o\n|\n|\n|__________")     
+        if nb_prop_fausse == 1:
+            print(" _________\n|        |\n|        o\n|       /|\ \n|\n|__________")
+        if nb_prop_fausse == 0:
+            print(" _________\n|        |\n|        o\n|       /|\ \n|       / \ \n|__________")    
+            print("Raté, la reine d'angleterre est morte")
+            
+    if "_" not in affichage:
+      print(">>> Gagné! <<<")
+      break
